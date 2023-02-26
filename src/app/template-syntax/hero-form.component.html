@@ -1,0 +1,26 @@
+<div id="heroForm">
+  <form novalidate (ngSubmit)="onSubmit(heroForm)" #heroForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name
+        <input class="form-control ng-invalid" name="name"  [(ngModel)]="hero.name" #name="ngModel" required/>
+      </label>
+      <ul *ngIf="heroForm.invalid && name.dirty">
+          <li *ngIf="name.errors.required">
+            You must enter a name
+          </li>
+      </ul>
+    </div>
+    <button type="submit" [disabled]="!heroForm.valid">Submit</button>
+  </form>
+  <div [hidden]="!heroForm.valid">
+    {{submitMessage}}
+  </div>
+</div>
+
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->
